@@ -2,10 +2,10 @@
 
 class Solution {
 public:
-    bool isValidSpeed(vector<int> piles, int k, int h) {
+    bool isValidSpeed(vector<int>& piles, int k, int h) {
         int time = 0;
         for (int num : piles) {
-            time += std::ceil(num/k);
+            time += std::ceil((double)num/k);
         }
         return time <= h;
     }
@@ -17,23 +17,18 @@ public:
                 x = num_bananas;
             }
         }
+        // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
 
-        vector<int> possible_speeds;
-        for (int i = 1; i <= x; i++) {
-            possible_speeds.push_back(i);
-        }
-
-        int left = 0;
-        int right = possible_speeds.size()-1;
-        int mid;
+        int left = 1;
+        int right = x;
         while (left < right) {
-            mid = (left + right) / 2;
-            if (isValidSpeed(piles, possible_speeds[mid], h)) {
+            int mid = (left+ right) / 2;
+            if (isValidSpeed(piles, mid, h)) {
                 right = mid;
             } else {
                 left = mid+1;
             }
         }
-        return possible_speeds[mid];
+        return left;
     }
 };
