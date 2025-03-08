@@ -1,5 +1,3 @@
-
-
 class Solution {
 public:
     bool isValidSpeed(vector<int>& piles, int k, int h) {
