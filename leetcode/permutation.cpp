@@ -16,6 +16,7 @@ public:
             freqs[s2[right]- 'a']++;
             right++;
         }
+        right--;
         if(freqs == ans) {
             return true;
         }
